@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="img/jQuery-icon.jpg" rel="icon">
+    <title>jQuery</title>
+
+    <style>
+    .stylish {
+        background-color: lightblue;
+        color: aquamarine;
+        height: 100%;
+        width: 100%;
+    }
+    </style>
+
+<style>
+
+        .b1, .b2, .b3, .b4{
+               display: inline-block;
+               position: relative;
+               margin: 5px;
+               width:250px;
+               height:250px;
+        }
+        .b1 {
+           background-color: mediumvioletred;
+        }
+        .b2 {
+           background-color: palevioletred;
+        }
+        .b3 {
+           background-color: salmon;
+        }
+        .b4 {
+           background-color: peachpuff;
+        }
+   
+       </style>
+
+</head>
+<body>
+
+    <ul>
+        <li><a href="#" target="_blank">Element1</a> </li>
+        <li><a href="#">Element2</a> </li>
+        <li><a href="#">Element3</a> </li>
+        <li><a href="#" class="elem">Element4</a> </li>
+        <li><a href="#">Element5</a> 
+        <ol>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ol>
+    </li>
+    </ul>
+
+<br /><br /><hr><br />
+
+<button id="btn1">Me Kliko!</button>
+<br> <br>
+<button id="btn2">Me Kliko Perseri!</button>
+<br><br>
+<div id="dataplace"></div>
+
+<br /><br /><hr><br /><br />
+<div class="containder">
+<div class="b1 after">After</div>
+<div class="b2 before">Before</div>
+<div class="b3 append">Append</div>
+<div class="b4 prepend">Prepend</div>
+</div>
+<br><br>
+<button id="fshi">Fshi kuti</button>
+<br> <br>
+<button id="shfaq">Shfaq kuti</button>
+<br> <br>
+<button id="toggle">Rregullo kuti</button>
+<br> <br>
+<button id="fadeout">Fade Out</button>
+<br> <br>
+<button id="fadein">Fade In</button>
+<br> <br>
+<button id="fadeto">Fade To</button>
+<br> <br>
+<button id="slideup">Slide Up</button>
+<br> <br>
+<button id="slidedown">Slide Down</button>
+<br> <br>
+<button id="slidetoggle">Slide Toggle</button>
+<br /><hr>
+<br> <br>
+<button id="animate">Animate Box</button>
+<script src="./jQuery.js"></script>
+
+<script>
+ $(document).ready(function() {
+
+     $('li').each(function(index, value) {
+      
+        console.log($(this).text());
+        $(this).toggleClass('stylish');
+     });
+
+     $('li').eq(1).toggleClass('stylish');
+     $('li').filter('.elem').toggleClass('stylish');
+     $('li').has('ul').toggleClass('stylish');
+     $('li').not('ol').toggleClass('stylish');
+
+
+     $('#btn1').click(function() {
+         $('#dataplace').data({"veprim": "Done"});
+     });
+
+     $('#btn2').click(function() {
+       console.log( $('#dataplace').data("veprim")); 
+     });
+
+     $('#fshi').click(function() {
+         $('.containder').hide(500);
+     });
+     $('#shfaq').click(function() {
+         $('.containder').show(500);
+     });
+     $('#toggle').click(function() {
+         $('.containder').toggle(500);
+     });
+     $('#fadeout').click(function() {
+         $('.containder').fadeOut(500);
+     });
+     $('#fadein').click(function() {
+         $('.containder').fadeIn(500);
+     });
+     $('#fadeto').click(function() {
+         $('.containder').fadeTo(500, 0.5);
+     });
+     $('#slideup').click(function() {
+         $('.containder').slideUp(500);
+     });
+     $('#slidedown').click(function() {
+         $('.containder').slideDown(500);
+     });
+     $('#slidetoggle').click(function() {
+         $('.containder').slideToggle(500);
+     });
+
+     $('#animate').click(function() {
+         $('.b1').animate({
+            "width": "300px",
+            "margin-top": "80px",
+            "opacity": 0.2
+     },2000);
+     });
+     $('#animate').click(function() {
+         $('.b2').animate({
+            "width": "300px",
+            "margin-top": "80px",
+            "opacity": 0.2
+     },2000);
+     });
+     $('#animate').click(function() {
+         $('.b3').animate({
+            "width": "300px",
+            "margin-top": "80px",
+            "opacity": 0.2
+     },2000);
+     });
+     $('#animate').click(function() {
+         $('.b4').animate({
+             "width": "300px",
+             "margin-top": "80px",
+             "opacity": 0.2
+     },2000);
+     });
+ });
+ 
+ </script>
+</body>
+</html>

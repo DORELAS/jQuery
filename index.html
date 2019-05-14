@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="img/jQuery-icon.jpg" rel="icon">
+    <title>jQuery</title>
+</head>
+<body>
+    <h1>Head of the document!</h1>
+    <hr>
+    <div id="readyDemo">
+    </div>
+<hr> 
+<a href="#" target="_blank">Case1</a>
+<a href="#" target="_blank">Case2</a>
+<a href="#" target="_self">Case3</a>
+<a href="#" target="_blank">Case4</a>
+<hr>
+    <p>List1:</p>
+    <ul id="item-list">
+            <li id="list-li">
+                Coffee
+                <br />
+                <a href="#">Outside</a>
+                <div>
+                    <a id="inside-a-div">Inside</a>
+                </div>
+            </li>
+            <li>Tea</li>
+            <li>Milk</li>
+          </ul>
+    <br /><br /><br />
+
+    <button>Click Me!</button>    
+    <hr>
+
+    <script src="./jQuery.js"></script>
+    <script>
+    
+    console.log('On Line Number 18!');
+    $(document).ready(function() {
+        $('#readyDemo').text('Did this useing jQuery!').css('color', 'green').css('font-size', 100).fadeIn('slow');
+        $('h1').css('color', 'purple');
+
+        $("a[target='_self']").css('color', 'red');
+        $("a[target='_blank']").css('color', 'gold');
+        $('#item-list > li:last').css('color', 'violet');
+    });
+    console.log('On Line Number 22!');
+
+$(document).ready(function() {
+
+    $('button').click(function() {
+        $('#item-list').find('a').css('color', 'orange');
+        $('#inside-a-div').closest('li').css('color', 'red');
+        $('#inside-a-div').parent().css('border', 'solid 1px black');
+        $('li').first().css('border', 'solid 1px blue');
+        $('li').last().css('border', 'solid 1px grey');
+    });
+});
+
+    </script>
+</body>
+</html>

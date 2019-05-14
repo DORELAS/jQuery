@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link href="img/jQuery-icon.jpg" rel="icon">
+    <title>jQuery</title>
+
+    <style> 
+            p { 
+                display: block; 
+                padding: 50px; 
+                width: 280px; 
+                border: 2px solid green; 
+                color: chartreuse;
+                font-size: 24px;
+                font-weight: 200;
+                background-color: bisque;
+            } 
+        </style> 
+</head>
+<body>
+    <p>Click Me!</p>
+
+    <script src="./jQuery.js"></script>
+<script>    
+$(document).ready(function() {
+
+$("p").bind("click", function(event) {
+    event.preventDefault(); 
+    event.stopPropagation();
+   alert("Given paragraph was clicked."); 
+            }); 
+/**
+$("p").bind("mouseenter", function() { 
+         $("p").text("Mouse passed here."); 
+            });    */
+
+$("p").on("mouseenter", function(event) { 
+    event.preventDefault();
+    event.stopPropagation();
+     $("p").text("Mouse passed here."); 
+     console.log(event);
+
+     $(this).off('mouseenter');
+            }); 
+/**
+$("p").bind("mouseleave", function() { 
+    $("p").text("Mouse moved from here."); 
+            });   */
+
+$("p").on("mouseleave", function(event) { 
+    event.preventDefault();
+    event.stopPropagation();
+    $("p").text("Mouse moved from here."); 
+
+    console.log(event.type);
+    console.log(event.target);
+    console.log(event.pageX);
+    console.log(event.pageY);
+    console.log(event.which);
+
+    $(this).off('mouseleave');
+            });
+
+$("p").on('customEvent', function() {
+    console.log('Custom event called!');
+});            
+
+$("p").trigger('customEvent');
+        });
+</script>
+</body>
+</html>

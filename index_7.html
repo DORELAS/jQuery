@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="img/jQuery-icon.jpg" rel="icon">
+    <title>jQuery</title>
+</head>
+<body>
+
+    <div id="container"></div>
+    <button> Click Me </button>
+<br /><br /><hr><br><br>
+<form action="/" id="searchForm">
+  <input type="text" name="s" placeholder="Search...">
+  <input type="submit" value="Search">
+</form>
+<!-- the result of the search will be rendered inside this div -->
+<div id="resulte"></div>
+<script src="./jQuery.js"></script>
+<script> 
+
+$('button').click(function() {
+
+var userDetails;
+
+function ajax(options) {
+    var request = $.Deferred();
+
+    request.resolve(options.success);
+    request.reject(options.error);
+
+    return request.promise;
+};
+    $.ajax({
+
+        url: 'https://jsonplaceholder.typicode.com/posts',
+        type: 'GET',
+        dataType: 'json',
+        timeout: 2500,
+        success: function(result) {
+            userDetails = result;
+  // MAKE ANOTHER AJAX CALL   
+$.ajax({   
+    success: function() {
+        $.ajax({
+            success: function() {}
+              
+        })
+    }
+})
+            console.log('Complete with success and data: ', result);
+        },
+        error: function(result) {
+            console.log('Complete with error!');
+            alert('Something went wrong, please try again later.');
+        },
+        complete: function() {
+            console.log('Complete!');
+        }
+    }).done (
+        function() {
+            console.log(userDetails);
+        }
+    );
+
+// UNDEFINED BECAUSE IS ASYNC
+console.log(userDetails);
+
+    $.getJSON('https://jsonplaceholder.typicode.com/posts', {}, function() {
+        console.log('Useing getJSON!');
+    });
+
+    $('container').load('test.html');
+
+ $( "#searchForm" ).submit(function( event ) {
+ 
+ // Stop form from submitting normally
+ event.preventDefault();
+
+ // Get some values from elements on the page:
+ var $form = $( this ),
+   term = $form.find( "input[name='s']" ).val(),
+   url = $form.attr( "action" );
+
+ // Send the data using post
+ var posting = $.post( url, { s: term } );
+
+ // Put the results in a div
+ posting.done(function( data ) {
+   var content = $( data ).find( "#content" );
+   $( "#resulte" ).empty().append( content );
+ });
+});
+});
+        
+</script>  
+</body>
+</html>

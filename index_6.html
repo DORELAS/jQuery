@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="img/jQuery-icon.jpg" rel="icon">
+    <title>jQuery</title>
+</head>
+<body>
+        <div class="room" id="kitchen">
+                <div class="lightbulb on"></div>
+                <div class="switch"></div>
+                <div class="switch"></div>
+                <div class="clapper"></div>
+        </div>
+
+<script src="./jQuery.js"></script>
+   <script> 
+$(document).ready(function() {
+$( ".switch, .clapper" ).click(function() {
+    var light = $( this ).closest( ".room" ).find( ".lightbulb" );
+    if ( light.is( ".on" ) ) {
+        light.removeClass( "on" ).addClass( "off" );
+    } else {
+        light.removeClass( "off" ).addClass( "on" );
+    }
+});
+
+$( ".lightbulb" ).on( "light:toggle", function( event ) {
+    var light = $( this );
+    if ( light.is( ".on" ) ) {
+        light.removeClass( "on" ).addClass( "off" );
+    } else {
+        light.removeClass( "off" ).addClass( "on" );
+    }
+});
+ 
+$( ".switch, .clapper" ).click(function() {
+    var room = $( this ).closest( ".room" );
+    room.find( ".lightbulb" ).trigger( "light:toggle" );
+});
+});
+
+   </script>  
+</body>
+</html>

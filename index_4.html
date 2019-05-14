@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link href="index_4.css" type="text/css" rel="stylesheet">
+    <link href="img/jQuery-icon.jpg" rel="icon">
+    <title>jQuery</title>
+
+</head>
+<body>
+        <div class="container">
+                <h2>Registration</h2>
+                <form action="" name="registration" id="registration">
+              
+                  <label for="firstname">First Name</label>
+                  <input type="text" name="firstname" id="firstname" placeholder="Name">
+              
+                  <label for="lastname">Last Name</label>
+                  <input type="text" name="lastname" id="lastname" placeholder="Lastname">
+              
+                  <label for="email">Email</label>
+                  <input type="email" name="email" id="email" placeholder="first@second.com">
+              
+                  <label for="password">Password</label>
+                  <input type="password" name="password" id="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;">
+              
+                  <button type="submit" id="submit">Register</button>
+                </form>
+        
+    <script src="./jQuery.js"></script>
+    <script>
+
+      // Wait for the DOM to be ready
+$(document).ready(function() {
+
+    $('#submit').on('click', function(e) {
+    e.preventDefault();
+    var first_name = $('#firstname').val();
+    var last_name = $('#lastname').val();
+    var email = $('#email').val();
+    var password = $('#password').val();
+ 
+    $(".error").remove();
+ 
+ if (first_name.length < 1) {
+   $('#firstname').after('<span class="error">This field is required</span>');
+ }
+ if (last_name.length < 1) {
+   $('#lastname').after('<span class="error">This field is required</span>');
+ }
+ if (email.length < 1) {
+   $('#email').after('<span class="error">This field is required</span>');
+
+ } else {
+   var regEx = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}/;
+   var validEmail = regEx.test(email);
+   if (!validEmail) {
+     $('#email').after('<span class="error">Enter a valid email</span>');
+   }
+ }
+ if (password.length < 8) {
+      $('#password').after('<span class="error">Password must be at least 8 characters long</span>');
+    }
+    })
+    });
+
+    </script>
+</body>
+</html>

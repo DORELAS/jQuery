@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="img/jQuery-icon.jpg" rel="icon">
+    <title>jQuery</title>
+
+    <style>
+
+     .b1, .b2, .b3, .b4{
+            display: block;
+            position: relative;
+            margin: 5px;
+            float:left;
+            width:25%;
+            height:400px;
+     }
+     .b1 {
+        background-color: mediumvioletred;
+     }
+     .b2 {
+        background-color: palevioletred;
+     }
+     .b3 {
+        background-color: salmon;
+     }
+     .b4 {
+        background-color: peachpuff;
+     }
+
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <p id="question"> How are you doing?</p>
+        <input type="text" id="answer-box" />
+        <p id="result"></p>
+        <p id="answer"></p>
+        <button id="btn">Submit</button>
+    </div>
+
+    <br /><br /><hr><br /><br />
+
+    <div class="b1 after">After</div>
+    <div class="b2 before">Before</div>
+    <div class="b3 append">Append</div>
+    <div class="b4 prepend">Prepend</div>
+
+    <br /><br /><hr><br /><br />
+
+<a href="#" target="_blank">Rast1</a>
+<a href="#" target="_self">Rast2</a>
+<button id="linkFix">Fix my Links</button>
+
+<br /><br /><hr><br /><br />
+<a href="#" target="_self" id="cloned">Rast3</a>
+<button id="linkClone">Clone my Links</button>
+
+    <script src="./jQuery.js"></script>
+    <script>
+    
+    $(document).ready(function() {
+
+        $('#btn').click(function() {
+            var answer = $('#answer-box').val();
+
+            if(answer == "ok") {
+                $('#result').text("I feel soooo... happy for you!"); 
+            }else {
+                $('#result').html('<span style="color:red"> I feel sorry!</span>');
+            }
+        })
+
+        $('.after').click(function() {
+            $('.after').after('<div class="b1 after" style = "background-color:blue">Attached</div>');
+        })
+        $('.before').click(function() {
+            $('.before').before('<div class="b2 before" style = "background-color:green">Attached</div>');
+        })
+        $('.append').click(function() {
+            $('.append').append('<div class="b3 append" style = "background-color:red">Attached</div>');
+        })
+        $('.prepend').click(function() {
+            $('.prepend').prepend('<div class="b4 prepend" style = "background-color:gold">Attached</div>');
+        })
+
+    });
+
+    $(document).ready(function() {
+
+        $('#linkFix').click(function() {
+          var targetValue = $('a').attr('target');
+          console.log(targetValue);
+
+          if(targetValue == '_blank') {
+              $('a').attr('target', '_self');
+              $('a').addClass('b4');
+          } 
+
+        });
+
+        $('#linkClone').click(function() {
+            $('a').clone().insertAfter('#cloned');
+            $('a').clone(true).insertAfter('#cloned');
+        });
+    });
+    
+    </script>
+</body>
+</html>
